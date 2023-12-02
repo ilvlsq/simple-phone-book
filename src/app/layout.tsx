@@ -2,6 +2,7 @@ import "./globals.css";
 import AuthProvider from "./context/AuthProvider";
 import Navbar from "./components/Navbar";
 import { Inter } from "next/font/google";
+import { verification } from "./api/auth/verification";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +16,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  verification;
   return (
-    <html lang="en" data-theme="dim">
+    <html lang="en" data-theme="forest">
       <body className={inter.className}>
         <AuthProvider>
           <Navbar />

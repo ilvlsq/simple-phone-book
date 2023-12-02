@@ -11,17 +11,26 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(cuid())
-  username  String? @unique
-  password String
-  contacts  PhoneBookContact[]
+  id Int @id @default(autoincrement())
+  name String? 
+  email String @unique
+  contactOne PhoneBookContact[]
+  contactTwo BirthdaysList[]
 }
 
 model PhoneBookContact {
-  id        Int     @id @default(autoincrement())
-  name     String
+  id Int @id @default(autoincrement())
+  name String
   lastname String
-  phone    String
-  owner    User    @relation(fields: [ownerId], references: [id])
-  ownerId String
+  phone String
+  owner User @relation(fields: [ownerEmail], references: [email])
+  ownerEmail String
+}
+
+model BirthdaysList {
+  id Int @id @default(autoincrement())
+  name String
+  date String
+  owner User @relation(fields: [ownerEmail], references: [email])
+  ownerEmail String
 }

@@ -1,28 +1,22 @@
-import { options } from "./api/auth/[...nextauth]/options";
-import { getServerSession } from "next-auth/next";
-import Link from "next/link";
+import PhonesTable from "./components/PhonesTable";
+import BirthdaysCards from "./components/BirthdaysCards";
+import { getContacts } from "./api/contact-book/contactsActions";
+import { getBirthdays } from "./api/birthdays/birthdaysActions";
 
 export default async function Home() {
-  const session = await getServerSession(options);
-
+  const contaktsForTable = await getContacts();
+  const birthdaysForTable = await getBirthdays();
   return (
     <>
-      <div className="diff aspect-[16/7]">
-        <div className="diff-item-1">
-          <div className="bg-primary text-primary-content text-5xl font-black grid place-content-center">
-            And here's a list of birthdays
-            <br />
-            To start, press "Create a birthdays"
-          </div>
+      <div className="flex flex-col justify-center mx-auto mt-11">
+        <div className="mb-11">
+          <span className="text-2xl">Here your Phone Book:</span>
+          <PhonesTable contaktsForTable={contaktsForTable} />
         </div>
-        <div className="diff-item-2">
-          <div className="bg-base-200 text-5xl font-black grid place-content-center">
-            That's where your phone numbers will be
-            <br />
-            To start, press "Create phone numbers"
-          </div>
+        <span className="text-2xl">Here's your list of birthdays:</span>
+        <div className="grid grid-cols-4 gap-4">
+          <BirthdaysCards birthdaysForTable={birthdaysForTable} />
         </div>
-        <div className="diff-resizer"></div>
       </div>
     </>
   );
