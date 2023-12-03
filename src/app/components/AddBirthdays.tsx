@@ -32,7 +32,7 @@ export default function AddBirthdays() {
       SetSpined(true);
       const newBirthday = { name, date };
       console.log(newBirthday);
-      await fetch("http://localhost:3000/api/birthdays", {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/birthdays`, {
         method: "POST",
         body: JSON.stringify(newBirthday),
         headers: {

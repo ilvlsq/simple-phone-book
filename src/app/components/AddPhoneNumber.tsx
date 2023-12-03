@@ -15,7 +15,7 @@ export default function AddPhoneNumber() {
     ) {
       SetSpined(true);
       const newContact = { name, lastName, phoneNumber };
-      await fetch("http://localhost:3000/api/contact-book", {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact-book`, {
         method: "POST",
         body: JSON.stringify(newContact),
         headers: {
