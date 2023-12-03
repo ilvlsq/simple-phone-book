@@ -13,7 +13,7 @@ export default async function Home() {
           <span className="text-2xl">Here your Phone Book:</span>
           <PhonesTable contaktsForTable={contaktsForTable} />
         </div>
-        <span className="text-2xl">Here's your list of birthdays:</span>
+        <span className="text-2xl">Here&apos;s your list of birthdays:</span>
         <div className="grid grid-cols-4 gap-4">
           <BirthdaysCards birthdaysForTable={birthdaysForTable} />
         </div>
