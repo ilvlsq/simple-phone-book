@@ -1,9 +1,11 @@
 import PhonesTable from "./components/PhonesTable";
 import BirthdaysCards from "./components/BirthdaysCards";
+import { verification } from "./api/auth/verification";
 import { getContacts } from "./api/contact-book/contactsActions";
 import { getBirthdays } from "./api/birthdays/birthdaysActions";
 
 export default async function Home() {
+  verification;
   const contaktsForTable = await getContacts();
   const birthdaysForTable = await getBirthdays();
   return (
