@@ -3,9 +3,10 @@ import { PrismaClient } from "@prisma/client";
 import { getServerSession } from "next-auth/next";
 import { options } from "../auth/[...nextauth]/options";
 
+const prisma = new PrismaClient();
+
 export async function POST(req: any) {
   const session = await getServerSession(options);
-  const prisma = new PrismaClient();
   try {
     const data = await req.json();
     await prisma.birthdaysList.create({
@@ -25,7 +26,6 @@ export async function POST(req: any) {
 }
 
 export async function DELETE(req: any) {
-  const prisma = new PrismaClient();
   try {
     const data = await req.json();
     await prisma.birthdaysList.delete({
