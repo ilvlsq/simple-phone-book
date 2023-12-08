@@ -14,7 +14,7 @@ export default function BirthdaysCards({ birthdaysForTable }: any) {
   }, [birthdaysForTable]);
 
   async function handleDelete(deleteBirthdayId: any) {
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/birthdays`, {
+    await fetch(`http://localhost:3000/api/birthdays`, {
       method: "DELETE",
       body: JSON.stringify(deleteBirthdayId),
     });

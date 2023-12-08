@@ -1,9 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/lib/db";
 import { getServerSession } from "next-auth";
 import { options } from "../auth/[...nextauth]/options";
 
 export async function getBirthdays() {
-  const prisma = new PrismaClient();
   const birthdays = await prisma.birthdaysList.findMany();
   const session = await getServerSession(options);
   const birthdaysOfCurrentUser = birthdays.filter(

@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/lib/db";
 import { getServerSession } from "next-auth";
 import { options } from "../auth/[...nextauth]/options";
-
-const prisma = new PrismaClient();
 
 export async function getContacts() {
   const contacts = await prisma.phoneBookContact.findMany();

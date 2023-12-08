@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/lib/db";
 import { options } from "./[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
-
-const prisma = new PrismaClient();
 
 export async function verification() {
   const users = await prisma.user.findMany();
